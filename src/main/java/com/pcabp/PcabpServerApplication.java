@@ -9,5 +9,4 @@ public class PcabpServerApplication {
     public static void main(String[] args) {
         SpringApplication.run(PcabpServerApplication.class, args);
     }
-
 }
