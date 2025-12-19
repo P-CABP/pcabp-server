@@ -13,3 +13,9 @@ spring:
     baseline-on-migrate: true
     clean-disabled: false
     clean-on-error: ${FLYWAY_CLEAN_ON_ERROR:true}
+
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
