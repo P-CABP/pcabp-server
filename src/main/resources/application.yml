@@ -6,3 +6,10 @@ spring:
     url: jdbc:mysql://localhost:3306/pcabp?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: 1q2w3e4r!
+
+  flyway:
+    enabled: true
+    locations: classpath:migration
+    baseline-on-migrate: true
+    clean-disabled: false
+    clean-on-error: ${FLYWAY_CLEAN_ON_ERROR:true}
