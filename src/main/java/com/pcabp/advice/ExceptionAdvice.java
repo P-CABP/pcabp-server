@@ -1,5 +1,6 @@
 package com.pcabp.advice;
 
+import com.pcabp.constant.Message;
 import com.pcabp.exception.BusinessException;
 import com.pcabp.exception.ClientException;
 import com.pcabp.exception.RestException;
@@ -47,7 +48,7 @@ public class ExceptionAdvice {
         log.error("Unhandled Exception : {}", exception.getMessage());
         log.error("Exception Log : ", exception);
 
-        String errorMessage = messageTranslator.translate("Message.EXCEPTION_INTERNAL_SERVER_ERROR");
+        String errorMessage = messageTranslator.translate(Message.Exception.INTERNAL_SERVER_ERROR);
         return ResponseEntity.internalServerError().body(RestResponse.ofFailure(errorMessage));
     }
 
