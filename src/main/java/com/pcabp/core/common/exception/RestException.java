@@ -18,4 +18,12 @@ public class RestException extends RuntimeException {
         this.messageKey = messageKey;
         this.labelKeys = labelKeys;
     }
+
+    public boolean hasMessageKey() {
+        return messageKey != null;
+    }
+
+    public boolean hasLabelCodes() {
+        return labelKeys != null && labelKeys.length > 0;
+    }
 }
