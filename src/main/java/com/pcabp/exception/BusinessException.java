@@ -1,4 +1,4 @@
-package com.pcabp.core.common.exception;
+package com.pcabp.exception;
 
 public class BusinessException extends RestException {
 

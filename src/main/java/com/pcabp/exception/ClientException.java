@@ -1,4 +1,4 @@
-package com.pcabp.core.common.exception;
+package com.pcabp.exception;
 
 public class ClientException extends RestException {
 

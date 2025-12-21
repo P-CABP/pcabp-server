@@ -1,13 +1,12 @@
-package com.pcabp.core.common.advice;
+package com.pcabp.advice;
 
-import com.pcabp.core.common.dto.RestResponse;
-import com.pcabp.core.common.exception.BusinessException;
-import com.pcabp.core.common.exception.ClientException;
-import com.pcabp.core.common.exception.RestException;
-import com.pcabp.core.common.exception.SystemException;
+import com.pcabp.exception.BusinessException;
+import com.pcabp.exception.ClientException;
+import com.pcabp.exception.RestException;
+import com.pcabp.exception.SystemException;
 import com.pcabp.helper.MessageTranslator;
+import com.pcabp.model.RestResponse;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -19,9 +18,6 @@ import lombok.extern.slf4j.Slf4j;
 @RestControllerAdvice
 @RequiredArgsConstructor
 public class ExceptionAdvice {
-
-    @Value("${spring.profiles.active}")
-    private String activeProfile;
 
     private final MessageTranslator messageTranslator;
 
@@ -49,9 +45,7 @@ public class ExceptionAdvice {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<RestResponse<String>> handleException(Exception exception) {
         log.error("Unhandled Exception : {}", exception.getMessage());
-        if (!"prod".equals(activeProfile)) {
-            log.error("Exception Log : ", exception);
-        }
+        log.error("Exception Log : ", exception);
 
         String errorMessage = messageTranslator.translate("Message.EXCEPTION_INTERNAL_SERVER_ERROR");
         return ResponseEntity.internalServerError().body(RestResponse.ofFailure(errorMessage));

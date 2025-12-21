@@ -1,4 +1,4 @@
-package com.pcabp.core.common.dto;
+package com.pcabp.model;
 
 import lombok.*;
 
