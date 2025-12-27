@@ -13,6 +13,9 @@ spring:
       port: 6379
       database: 0
 
+  session:
+    timeout: 1800s
+
   flyway:
     enabled: true
     locations: classpath:migration
@@ -26,8 +29,21 @@ spring:
     fallback-to-system-locale: false
     always-use-message-format: true
 
+server:
+  servlet:
+    session:
+      cookie:
+        name: JSESSIONID
+        http-only: true
+        secure: false
+        same-site: lax
+
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
   configuration:
     map-underscore-to-camel-case: true
     auto-mapping-behavior: full
+
+app:
+  client:
+    base-url: http://localhost:3000
