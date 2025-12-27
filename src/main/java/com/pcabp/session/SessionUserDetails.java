@@ -3,6 +3,7 @@ package com.pcabp.session;
 import java.util.Collection;
 import java.util.List;
 
+import com.pcabp.core.user.vo.SessionUser;
 import com.pcabp.core.user.vo.User;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -26,6 +27,13 @@ public class SessionUserDetails implements UserDetails {
                 .username(user.getUsername())
                 .password(user.getPassword())
                 .authorityCodes(user.getAuthorities())
+                .build();
+    }
+
+    public SessionUser toSessionUser() {
+        return SessionUser.builder()
+                .username(username)
+                .authorities(authorityCodes)
                 .build();
     }
 
