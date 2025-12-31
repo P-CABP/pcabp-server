@@ -9,6 +9,12 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class SessionHolder {
 
+    public static boolean isAuthenticated() {
+        Object principal =
+                SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return !principal.equals("anonymousUser");
+    }
+
     public static SessionUserDetails getSessionUser() {
         return (SessionUserDetails)
                 SecurityContextHolder.getContext().getAuthentication().getPrincipal();

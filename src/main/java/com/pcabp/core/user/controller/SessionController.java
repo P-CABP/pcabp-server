@@ -23,8 +23,12 @@ public class SessionController {
     @Operation(summary = "세션 정보 조회", description = "세션 정보를 조회합니다.")
     @GetMapping
     public RestResponse<SessionUser> getSession() {
-        SessionUserDetails sessionUserDetails = SessionHolder.getSessionUser();
-        SessionUser sessionUser = sessionUserDetails.toSessionUser();
-        return RestResponse.ofSuccess(sessionUser);
+        if (SessionHolder.isAuthenticated()) {
+            SessionUserDetails sessionUserDetails = SessionHolder.getSessionUser();
+            SessionUser sessionUser = sessionUserDetails.toSessionUser();
+            return RestResponse.ofSuccess(sessionUser);
+        }
+
+        return RestResponse.ofSuccess(null);
     }
 }
