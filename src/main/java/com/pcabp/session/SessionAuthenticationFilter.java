@@ -28,7 +28,7 @@ public class SessionAuthenticationFilter extends UsernamePasswordAuthenticationF
     public SessionAuthenticationFilter(AuthenticationManager authenticationManager) {
         super(authenticationManager);
         this.authenticationManager = authenticationManager;
-        setFilterProcessesUrl("/login"); // 명시적으로 로그인 URL 지정
+        setFilterProcessesUrl("/login");
     }
 
     @SneakyThrows
