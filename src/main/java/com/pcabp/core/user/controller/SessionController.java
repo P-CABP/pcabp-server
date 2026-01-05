@@ -16,13 +16,13 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 import lombok.RequiredArgsConstructor;
 
-@Tag(name = "세션 API", description = "세션 API 입니다.")
+@Tag(name = "Session API", description = "Session API Endpoints")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/v1/session")
 public class SessionController {
 
-    @Operation(summary = "세션 정보 조회", description = "세션 정보를 조회합니다.")
+    @Operation(summary = "세션 조회", description = "세션을 조회합니다.")
     @GetMapping
     public RestResponse<SessionUser> getSession() {
         if (SessionHolder.isAuthenticated()) {
